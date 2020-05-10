@@ -21,15 +21,11 @@ $(function() {
                 } else {
                     nums[numsId] += event.target.value;
                 }
-                console.log(`Input value: ${input.val()}`);
-                console.log(`Number[${numsId}] value: ${nums[numsId]}`);
             });
             operations.on('click', function(event) {
                 let inputVal = input.val() + event.target.value;
                 input.val(inputVal);
                 ops[opsId] = event.target.value;
-                console.log(`Input value: ${input.val()}`);
-                console.log(`Operation[${opsId}] value: ${ops[opsId]}`);
                 numsId++;
                 opsId++;
             });
@@ -38,8 +34,6 @@ $(function() {
                 inputVal = inputVal.replace(nums[numsId], '');
                 input.val(inputVal);
                 ops[opsId] = event.target.value;
-                console.log(`Input value: ${input.val()}`);
-                console.log(`Operation[${opsId}] value: ${ops[opsId]}`);
                 opsId++;
             });
             calculateBtn.on('click', function() {
@@ -87,18 +81,17 @@ $(function() {
                         if (res === 0) {
                             res = +nums[i] + +nums[i + 1];
                         } else {
-                            res += +nums[i];
+                            res += +nums[i + 1];
                         }
                         break;
                     case '-':
                         if (res === 0) {
                             res = +nums[i] - +nums[i + 1];
                         } else {
-                            res -= +nums[i];
+                            res -= +nums[i + 1];
                         }
                         break;
                 }
-                console.log(res);
             }
             input.val(res);
             numsId = 0;
